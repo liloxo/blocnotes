@@ -6,9 +6,9 @@ part 'notes_event.dart';
 part 'notes_state.dart';
 
 class NotesBloc extends Bloc<NotesEvent, NotesState> {
-  final SqlDb sqlDb ;
+  SqlDb sqlDb = SqlDb() ;
   List<NoteModel>? notesmodel = [];
-  NotesBloc(this.sqlDb) : super(NotesInitial()) {
+  NotesBloc() : super(NotesInitial()) {
     on<NotesEvent>((event, emit) async {
       if(event is GetNotes){
         emit(NotesLoading());

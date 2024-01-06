@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:providernotes/homepage.dart';
-import 'package:providernotes/sqldb.dart';
 import 'package:providernotes/view/addnote.dart';
 import 'mybloc/addnote/bloc/addnote_bloc.dart';
 import 'mybloc/editnote/bloc/editnote_bloc.dart';
@@ -36,11 +35,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
       BlocProvider(
-      create: (_) => NotesBloc(SqlDb())),
+      create: (_) => NotesBloc()),
       BlocProvider(
-      create: (_) => AddnoteBloc(SqlDb())),
+      create: (_) => AddnoteBloc()),
       BlocProvider(
-      create: (_) => EditnoteBloc(SqlDb()))
+      create: (_) => EditnoteBloc())
       ], child: MaterialApp(
       debugShowCheckedModeBanner: false,
       home:  const MyHomePage(),

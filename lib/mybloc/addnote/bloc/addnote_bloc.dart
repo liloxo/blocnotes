@@ -5,11 +5,11 @@ part 'addnote_event.dart';
 part 'addnote_state.dart';
 
 class AddnoteBloc extends Bloc<AddnoteEvent, AddnoteState> {
-  final SqlDb sqlDb;
+  SqlDb sqlDb = SqlDb();
   GlobalKey<FormState> formkey = GlobalKey();
   TextEditingController title = TextEditingController();
   TextEditingController content = TextEditingController();
-  AddnoteBloc(this.sqlDb) : super(AddnoteInitial()) {
+  AddnoteBloc() : super(AddnoteInitial()) {
     on<AddnoteEvent>((event, emit) async {
       if(event is Addnote){
         if(formkey.currentState!.validate()){
